@@ -115,7 +115,7 @@ python divide.py
 
 Specify the datasets dividing and give the storage path of the previous step in the `script`, then execute the following command:
 ~~~bash
-python construct_sets.py
+python construct.py
 ~~~
 
 3. Training
