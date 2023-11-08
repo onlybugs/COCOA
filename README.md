@@ -12,7 +12,7 @@ COCOA is a a deep neural network framework based on convolution and attention, t
 
 COCOA is written in Python3 with PyTorch framework.
 
-The following versions are recommended when using iEnhance:
+The following versions are recommended when using COCOA:
 
 - torch 1.12.1
 - numpy 1.21.2
