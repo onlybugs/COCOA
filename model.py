@@ -32,9 +32,9 @@ class ResLayer2D(nn.Module):
             
         new_features += residual
 
-        # relu
         return self.relu(new_features)
 
+# 2d -> output
 class ResBlock2D(nn.Module):
     def __init__(self,num_layers,in_channel,out_channel,ks = 1,p = 0,s = 1):
         super(ResBlock2D,self).__init__()
@@ -55,7 +55,7 @@ class ResBlock2D(nn.Module):
 
         return x
 
-
+# 1d 
 class MF(nn.Module):
     def __init__(self,in_channel,out_channel,N) -> None:
         super(MF,self).__init__()
@@ -72,6 +72,7 @@ class MF(nn.Module):
 
         return x
 
+# 1 -> 2
 class AFF(nn.Module):
     '''
     AFF
@@ -115,9 +116,9 @@ class AFF(nn.Module):
         return xo
 
 
-class MFGen(nn.Module):
+class COCOA(nn.Module):
     def __init__(self) -> None:
-        super(MFGen,self).__init__()
+        super(COCOA,self).__init__()
         
         # 1D
         self.mfl = MF(1,128,6)
@@ -142,14 +143,13 @@ class MFGen(nn.Module):
         xl = self.mfl(xl)
         xr = self.mfr(xr)
 
-        # aff
+        # 1d -> 2d
         xlr = self.afflr(xl,xr)
         xrl = self.affrl(xr,xl)
         xres = torch.concat([xlr,xrl],axis = 1)
 
-        # 2d res
+        # 2d 
         xcc = self.conv2D(xres)
-        # xcc = xcc.squeeze()
 
 
         return xcc
