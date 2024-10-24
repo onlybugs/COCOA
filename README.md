@@ -22,6 +22,7 @@ The following versions are recommended when using COCOA:
 - matplotlib 3.1.0
 - tqdm 4.62.3
 - cooler 0.8.11
+- pyBigWig 0.3.18
 
 **_Note:_** GPU usage for training and testing is highly recommended.
 
@@ -83,6 +84,11 @@ save_path = "./"
 When all preparations have been completed, execute the following command:
 ~~~bash
 python predict.py
+~~~
+
+We also provide a command args version code to execute prediction step. Useing the following command to predict:
+~~~bash
+python predict-arg.py -mp ./pretrained/RegModule-Best.pt -i ../data/hff -o ./savep -c 16 18
 ~~~
 
 ### 2. Applying predicted data
